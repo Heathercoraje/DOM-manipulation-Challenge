@@ -4,38 +4,48 @@
 Write a function which, if the introduction paragraph has the class "highlight",
 it will be removed; otherwise the class "highlight" is added.
 */
-var toggleHighlight = function(){
+var toggleHighlight = function () {
+  document.querySelector(".introduction").classList.toggle("highlight")
 
-}
-// toggleHighlight(); //uncomment me to test
+};
 
-
+toggleHighlight(); // uncomment me to test
 /*
+
 Write a function which returns all text content of the introduction paragraph
 */
-var getText = function(){
 
+var getText = function () {
+  console.log(document.querySelector(".introduction").innerText);
+  var text = document.querySelector(".introduction").innerText;
+  return text
 }
-// getText(); //uncomment me to test
 
+getText();
 
 /*
 Write a function which takes a string, and returns true if the introduction
 paragraph contains that string, and false if it doesn't.
 */
-var containsString = function(){
-
+var containsString = function (word) {
+  var text = document.querySelector(".introduction").innerText;
+  console.log(text.includes(word));
+  return text.includes(word);
 }
-// containsString(); //uncomment me to test
+
+//containsString('dolor'); //uncomment me to test
 
 
 /*
 Write a function which returns the value in the `firstName` text input
 */
 var getFirstNameValue = function(){
+  console.log(document.querySelector("input[name='firstName']").value);
+  return document.querySelector("input[name='firstName']").value;
 
 }
-// getFirstNameValue(); //uncomment me to test
+
+//getFirstNameValue(); //uncomment me to test
 
 
 /*
@@ -43,9 +53,11 @@ Write a function which takes a string, `inputName`, and returns the value in the
 has `inputName` as the name attribute
 */
 var getValue = function(inputName){
-
+  console.log(document.querySelector("form input[name='"+inputName+"']").value);
+//  console.log(document.getElementsbyTagName(input).elements[inputName].value);
 }
-// getValue(put an argument here ); //uncomment me to test
+
+//getValue('lastName'); //uncomment me to test
 
 
 /*
@@ -54,9 +66,15 @@ and returns a copy of the object, but with an `inputName` key on the object
 whose value is taken from the input element with that name.
 */
 var updateStateValue = function (formState, inputName){
+  var stateCopy = Object.keys(formState).reduce(function(accumulator, key){
+    accumulator[key] = formState[key];
+    return accumulator;
+  }, {});
+  stateCopy[inputName] = getValue(inputName);
+  return stateCopy;
+  }
 
-}
-// updateStateValue(put an argument here ); //uncomment me to test
+updateStateValue(input, firstName); //uncomment me to test
 
 
 /*
