@@ -54,6 +54,7 @@ has `inputName` as the name attribute
 var getValue = function(inputName){
   //console.log(document.querySelector("form input[name='"+inputName+"']").value);
   return document.querySelector("form input[name='"+inputName+"']").value
+  //return document.querySelector(`form input[name='${inputName}']`).value
 };
 //getValue('lastName'); //uncomment me to test
 
